@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kartu;
 use Illuminate\Http\Request;
 
 class KartuController extends Controller
@@ -9,9 +10,13 @@ class KartuController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // ini adalah controller kartu yang menggunakan penulisan eloquent ORM
     public function index()
     {
-        //
+        // index menggunakan eloquent ORM
+        $kartu = Kartu::all();
+
+        return view('admin.kartu.index', compact('kartu'));
     }
 
     /**
@@ -19,7 +24,6 @@ class KartuController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -27,7 +31,6 @@ class KartuController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -35,7 +38,6 @@ class KartuController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -43,7 +45,6 @@ class KartuController extends Controller
      */
     public function edit(string $id)
     {
-        //
     }
 
     /**
@@ -51,7 +52,6 @@ class KartuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
     }
 
     /**
@@ -59,6 +59,5 @@ class KartuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
     }
 }

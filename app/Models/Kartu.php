@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kartu extends Model
 {
     use HasFactory;
-
+    protected $table = 'kartu';
     protected $fillable = ['kode', 'nama', 'diskon', 'iuran'];
 
     public function pelanggan()
