@@ -54,6 +54,12 @@ class ProdukController extends Controller
      */
     public function show(string $id)
     {
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id', '=', 'jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->where('produk.id', $id)
+        ->get();
+
+        return view('admin.produk.show', compact('produk'));
     }
 
     /**

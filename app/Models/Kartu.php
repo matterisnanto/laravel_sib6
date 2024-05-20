@@ -10,6 +10,7 @@ class Kartu extends Model
     use HasFactory;
     protected $table = 'kartu';
     protected $fillable = ['kode', 'nama', 'diskon', 'iuran'];
+    public $timestamps = false;
 
     public function pelanggan()
     {

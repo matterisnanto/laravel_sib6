@@ -45,6 +45,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/jenis_produk', [JenisProdukController::class, 'index']); // menggunakan query builder
     Route::post('/jenis_produk/store', [JenisProdukController::class, 'store']); // menggunakan query builder
     Route::get('/kartu', [KartuController::class, 'index']);
+    Route::post('/kartu/store', [KartuController::class, 'store']);
 
     // route menggunakan nama class
     Route::resource('produk', ProdukController::class); // menggunakan eloquent

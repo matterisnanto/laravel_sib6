@@ -8,37 +8,8 @@
     </ol>
     <div class="card mb-4">
         <div class="card-header">
-            <a href="" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah <i class="fa-solid fa-square-plus"></i></a>
+            <a href="{{route('pelanggan.create')}}" class="btn btn-md btn-primary" >Tambah <i class="fa-solid fa-square-plus"></i></a>
         </div>
-
-        {{-- modal --}}
-
-
-
-
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <label for="inputPassword5" class="form-label">Password</label>
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-                <div id="passwordHelpBlock" class="form-text">
-                  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
@@ -51,6 +22,7 @@
                         <th>tanggal lahir</th>
                         <th>email</th>
                         <th>kartu id</th>
+                        <th>action</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -63,6 +35,8 @@
                         <th>tanggal lahir</th>
                         <th>email</th>
                         <th>kartu id</th>
+                        <th>action</th>
+
                     </tr>
                 </tfoot>
                 <tbody>
@@ -79,6 +53,9 @@
                         <td>{{$p->tgl_lahir}} </td>
                         <td>{{$p->email}} </td>
                         <td>{{$p->kartu->nama}} </td>
+                        <a href="{{route('pelanggan.show', $p->id) }}"
+                            class="btn btn-sm btn-success">
+                            <i class="fa-solid fa-eye"></i></a>
                     </tr>
                     @endforeach
                 </tbody>

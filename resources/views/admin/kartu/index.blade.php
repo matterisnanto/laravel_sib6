@@ -9,9 +9,41 @@
 
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            DataTable Example
+            <a href="" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Tambah <i class="fa-solid fa-square-plus"></i></a>
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">tambah jenis produk</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="kartuForm" action="{{url('admin/kartu/store')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="kode" id="kode" aria-describedby="emailHelp" placeholder="kode">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="nama" id="nama" aria-describedby="emailHelp" placeholder="nama">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="diskon" id="diskon" aria-describedby="emailHelp" placeholder="diskon">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="iuran" id="iuran" aria-describedby="emailHelp" placeholder="iuran">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="validateForm()">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>

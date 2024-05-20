@@ -26,6 +26,7 @@
                         <th>stok</th>
                         <th>min_stok</th>
                         <th>jenis</th>
+                        <th>show</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -38,6 +39,7 @@
                         <th>stok</th>
                         <th>min_stok</th>
                         <th>jenis</th>
+                        <th>show</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -54,6 +56,10 @@
                         <th>{{$p->stok}}</th>
                         <th>{{$p->min_stok}}</th>
                         <th>{{$p->jenis}}</th>
+                        <th>
+                        <a href="{{route('produk.show', $p->id)}}"
+                            >detail</a><i class="fa-solid fa-eye">
+                        </th>
 
                     </tr>
                     @endforeach
