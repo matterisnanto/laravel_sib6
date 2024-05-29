@@ -62,6 +62,12 @@
       </select>
     </div>
   </div>
+  <div class="form-group row">
+    <label for="text5" class="col-4 col-form-label">Foto</label>
+    <div class="col-8">
+      <input id="text5" name="foto" type="file" class="form-control">
+    </div>
+  </div>
 
   <div class="form-group row">
     <div class="offset-4 col-8">

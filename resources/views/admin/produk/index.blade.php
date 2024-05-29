@@ -1,71 +1,100 @@
 @extends('admin.layouts.app')
 @section('konten')
+
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Tables</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-        <li class="breadcrumb-item active">Tables</li>
-    </ol>
+                        <h1 class="mt-4">Data Produk</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>
+                        <div class="card mb-4">
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <a href="{{route('produk.create')}}" class="btn btn-md btn-primary" >
-                <i class="fa-solid fa-square-plus">
-                </i>
-            </a>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                            <a href="{{route('produk.create')}}"
+                            class="btn btn-md btn-primary" >
+                                <i class="fa-solid fa-square-plus"></i>
+                            </a>
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Kode</th>
+                                            <th>Nama</th>
+                                            <th>Harga Beli</th>
+                                            <th>Harga Jual</th>
+                                            <th>Stok</th>
+                                            <th>Minimal Stok</th>
+                                            <th>Jenis Produk</th>
+                                            <th>Action</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                            <th>No</th>
+                                            <th>Kode</th>
+                                            <th>Nama</th>
+                                            <th>Harga Beli</th>
+                                            <th>Harga Jual</th>
+                                            <th>Stok</th>
+                                            <th>Minimal Stok</th>
+                                            <th>Jenis Produk</th>
+                                            <th>Action</th>
+                                    </tfoot>
+                                    <tbody>
+
+                                        @foreach($produk as $p)
+                                        <tr>
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$p->kode}}</td>
+                                            <td>{{$p->nama}}</td>
+                                            <td>{{$p->harga_beli}}</td>
+                                            <td>{{$p->harga_jual}}</td>
+                                            <td>{{$p->stok}}</td>
+                                            <td>{{$p->min_stok}}</td>
+                                            <td>{{$p->jenis}}</td>
+                                            <td>
+                                        <a href="{{route('produk.show', $p->id)}}"
+                                        class="btn btn-sm btn-success">
+                                        <i class="fa-solid fa-eye"></i></a>
+                                        <a href="{{route('produk.edit', $p->id)}}" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+<button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$p->id}}">
+    <i class="fa-solid fa-trash-can "></i>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop{{$p->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="card-body">
-            <table id="datatablesSimple">
-                <thead>
-                    <tr>
-                        <th>no</th>
-                        <th>kode </th>
-                        <th>nama</th>
-                        <th>harga_beli</th>
-                        <th>harga_jual</th>
-                        <th>stok</th>
-                        <th>min_stok</th>
-                        <th>jenis</th>
-                        <th>show</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>no</th>
-                        <th>kode </th>
-                        <th>nama</th>
-                        <th>harga_beli</th>
-                        <th>harga_jual</th>
-                        <th>stok</th>
-                        <th>min_stok</th>
-                        <th>jenis</th>
-                        <th>show</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    @php $no=1 @endphp
-                    @foreach ($produk as $p)
-
-
-                    <tr>
-                        <td>{{$no++}} </td>
-                        <th>{{$p->kode }}</th>
-                        <th>{{$p->nama}}</th>
-                        <th>{{$p->harga_beli}}</th>
-                        <th>{{$p->harga_jual}}</th>
-                        <th>{{$p->stok}}</th>
-                        <th>{{$p->min_stok}}</th>
-                        <th>{{$p->jenis}}</th>
-                        <th>
-                        <a href="{{route('produk.show', $p->id)}}"
-                            >detail</a><i class="fa-solid fa-eye">
-                        </th>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="modal-body">
+          <p>Anda yakin ingin menghapus data {{$p->nama}}?</p>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="{{ route('produk.destroy', $p->id) }}" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
 @endsection
