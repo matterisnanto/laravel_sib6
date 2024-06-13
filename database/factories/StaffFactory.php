@@ -2,16 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Staff;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Staff;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Staff>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
 class StaffFactory extends Factory
 {
     protected $model = Staff::class;
-
     /**
      * Define the model's default state.
      *
@@ -20,8 +19,9 @@ class StaffFactory extends Factory
     public function definition(): array
     {
         return [
+            //
             'nip' => fake()->unique()->numerify(),
-            'name' => fake()->name(),
+            'name'=> fake()->name(),
             'alamat' => fake()->address(),
             'email' => fake()->unique()->safeEmail(),
         ];

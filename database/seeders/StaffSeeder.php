@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Staff;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Staff;
 
 class StaffSeeder extends Seeder
 {
@@ -12,6 +13,8 @@ class StaffSeeder extends Seeder
      */
     public function run(): void
     {
+        //
         Staff::factory(15)->create();
+
     }
 }

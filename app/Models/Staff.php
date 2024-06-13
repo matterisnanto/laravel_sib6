@@ -12,5 +12,6 @@ class Staff extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
-        'nip', 'name', 'alamat', 'email', ];
+        'nip', 'name', 'alamat', 'email'];
+    
 }

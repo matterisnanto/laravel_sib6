@@ -11,16 +11,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // midleware adalah pembatas antara user yang sudah otentikasi dan yg belum
-        $middleware->web([
-            RealRashid\SweetAlert\ToSweetAlert::class,
-            ]);
-        // web extention luar arahnya ke vendor
-        $middleware->alias([
+        //
+       $middleware->web([
+        \RealRashid\SweetAlert\ToSweetAlert::class,
+       ]);
+       $middleware->alias([
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'role' => App\Http\Middleware\Role::class,
-        ]);
-        // dipanggil ke view/controller
+        'checkActive' => App\Http\Middleware\CheckActive::class,
+       ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        //
     })->create();

@@ -418,7 +418,9 @@ b, strong {
         <div class="col-md-5">
             <div class="project-info-box mt-0">
                 <h5>DETAILS PRODUK</h5>
-                <p class="mb-0">{{$p->deskripsi}}</p>
+                <p class="mb-0">
+                  {{$p->deskripsi}}
+                </p>
             </div><!-- / project-info-box -->
 
             <div class="project-info-box">
@@ -441,11 +443,11 @@ b, strong {
         </div><!-- / column -->
 
         <div class="col-md-7">
-        @empty($p->foto)
-        <img src="{{url('admin/image/nophoto.jpg')}}"
+        @empty($p->foto)    
+        <img src="{{url('admin/image/nophoto.jpg')}}" 
             alt="project-image" class="rounded">
         @else
-        <img src="{{url('admin/image')}}/{{$p->foto}}"
+        <img src="{{url('admin/image')}}/{{$p->foto}}" 
             alt="project-image" class="rounded">
         @endempty
 

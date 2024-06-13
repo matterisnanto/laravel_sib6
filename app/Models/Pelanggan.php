@@ -9,11 +9,12 @@ class Pelanggan extends Model
 {
     use HasFactory;
     protected $table = 'pelanggan';
-    protected $fillable = ['kode', 'nama', 'jk', 'tmp_lahir', 'tgl_lahir', 'email', 'kartu_id'];
+    protected $fillable = [
+        'kode', 'nama', 'jk','tmp_lahir','tgl_lahir','email','kartu_id'
+    ];
     public $timestamps = false;
-
-    public function Kartu()
-    {
+    
+    public function kartu(){
         return $this->belongsTo(Kartu::class);
     }
 }

@@ -1,8 +1,10 @@
 <?php
-
+//jenis produk dan produk akan dibuat menggunakan 
+//type penulisan Query Builder 
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JenisProduk;
 // use DB;
 // library DB ini digunakan ketika menggunakan penulisan Query Builder
 use Illuminate\Support\Facades\DB;
@@ -15,14 +17,13 @@ class JenisProdukController extends Controller
     public function index()
     {
         // fungsi ini biasanya digunakan untuk mengarahkan ke file index
-        // variable jenis ini mendeklarasikan table yang diambil dari model
-        // untuk kemudian variable tersebut dikirimkan ke view
+        //variable jenis ini mendeklarasikan table yang diambil dari model
+        //untuk kemudian variable tersebut dikirimkan ke view
         $jenis = DB::table('jenis_produk')->get();
+        //return view mengarahkan ke view dan compact mengirim variable ke view
+        return view ('admin.jenis.index', compact('jenis'));
+        // return view ('admin.jenis.index', ['jenis' => $jenis]);
 
-        // return view mengarahkan ke view dan compact mengirim variable ke view
-        return view('admin.jenis.index', compact('jenis'));
-
-        // return view('admin.jenis.view', ['jenis' => $jenis]);
     }
 
     /**
@@ -30,6 +31,7 @@ class JenisProdukController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -37,12 +39,12 @@ class JenisProdukController extends Controller
      */
     public function store(Request $request)
     {
+        //menambahkan data menggunakan query builder
         DB::table('jenis_produk')->insert([
-            'nama' => $request->nama,
+            'nama'=> $request->nama,
         ]);
-
-        // return view mengarahkan ke file sebelum proses atau akan diproses
-        // return redirect mengarahkan ke file setelah proses
+        //return view mengarahkan ke file sebelum proses atau akan diproses 
+        //return redirect mengarahkan ke file setelah proses 
         return redirect('admin/jenis_produk');
         // redirect()->back();
     }
@@ -52,6 +54,7 @@ class JenisProdukController extends Controller
      */
     public function show(string $id)
     {
+        //
     }
 
     /**
@@ -59,6 +62,7 @@ class JenisProdukController extends Controller
      */
     public function edit(string $id)
     {
+        //
     }
 
     /**
@@ -66,6 +70,7 @@ class JenisProdukController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        //
     }
 
     /**
@@ -73,5 +78,6 @@ class JenisProdukController extends Controller
      */
     public function destroy(string $id)
     {
+        //
     }
 }

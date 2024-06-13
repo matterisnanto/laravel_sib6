@@ -6,22 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hello motherfucker</h1>
+    <h1>Hello Ini file pertama saya didalam view laravel</h1>
     @php
-        $nama = 'Mamat';
-        $nilai = 59.00;
+    $nama = 'Budi';
+    $nilai = 70.00;
     @endphp
-    {{-- struktur kendali if --}}
+    {{-- struktu kendali IF --}}
     @if ($nilai >= 60)
-    @php 
-        $ket = "lulus"; 
-    @endphp
-    @else
-    @php
-        $ket = "tidak lulus";
-    @endphp
+    @php $ket = "lulus"; @endphp
+    @else 
+    @php $ket = "tidak lulus"; @endphp
     @endif
 
-    {{$nama}} <p> Dengan nilai </p> {{$nilai}} <p> Dinyatakan </p> {{$ket}}
+    {{-- memanggil variable hasil didalam laravel menggunakan kurung kurawal--}}
+    {{$nama}} <p> Dengan nilai </p> {{$nilai}} <p>Dinyatakan </p> {{$ket}}
+
+
+    
 </body>
 </html>

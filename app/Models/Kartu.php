@@ -9,11 +9,13 @@ class Kartu extends Model
 {
     use HasFactory;
     protected $table = 'kartu';
-    protected $fillable = ['kode', 'nama', 'diskon', 'iuran'];
+
+    protected $fillable = ['kode', 'nama', 'diskon','iuran'];
+
     public $timestamps = false;
 
-    public function pelanggan()
-    {
-        return $this->belongsTo(Pelanggan::class);
+    public function pelanggan(){
+        return $this->hasMany(Pelanggan::class);
     }
 }
+

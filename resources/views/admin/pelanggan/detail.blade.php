@@ -36,17 +36,20 @@
 .rounded-3 {
     border-radius: 0.3rem !important;
 }
+
 .social-icon-style2 {
     margin-bottom: 0;
     display: inline-block;
     padding-left: 10px;
     list-style: none;
 }
+
 .social-icon-style2 li {
     vertical-align: middle;
     display: inline-block;
     margin-right: 5px;
 }
+
 a, a:active, a:focus {
     color: #616161;
     text-decoration: none;
@@ -61,18 +64,22 @@ a, a:active, a:focus {
     -webkit-transition-duration: .2s;
     -o-transition-duration: .2s;
 }
+
 .text-secondary, .text-secondary-hover:hover {
     color: #59b73f !important;
 }
 .display-25 {
     font-size: 1.4rem;
 }
+
 .text-primary, .text-primary-hover:hover {
     color: #ff712a !important;
 }
+
 p {
     margin: 0 0 20px;
 }
+
 .mb-1-6, .my-1-6 {
     margin-bottom: 1.6rem;
 }
@@ -82,9 +89,8 @@ p {
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow">
             @empty($pelanggan->foto)
-
                 <img src="{{url('admin/image/nophoto.jpg')}}" alt="...">
-            @else
+            @else 
             <img src="{{url('admin/image')}}/{{$pelanggan->foto}}" alt="...">
             @endempty
 

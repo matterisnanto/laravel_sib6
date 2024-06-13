@@ -9,8 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory;
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +21,13 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'is_active',
     ];
 
     public function role(string $role): bool
     {
         return $this->role === $role;
+        //=== untuk membandingkan dan menyamakan antara dua variable dan fungsi
     }
 
     /**
