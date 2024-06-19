@@ -158,4 +158,37 @@ class ProdukController extends Controller
 
         return redirect('admin/produk');
     }
+
+    public function produkApi()
+    {
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id', '=', 'jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->get();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'list data produk',
+            'data' => $produk,
+        ], 200);
+    }
+
+    public function produkDetailApi($id)
+    {
+        $produk = Produk::join('jenis_produk', 'jenis_produk_id', '=', 'jenis_produk.id')
+        ->select('produk.*', 'jenis_produk.nama as jenis')
+        ->where('produk.id', $id)
+        ->get();
+        if ($produk) {
+            return response()->json([
+               'success' => true,
+               'message' => 'detail data produk',
+                'data' => $produk,
+            ], 200);
+        } else {
+            return response()->jscon([
+                'success' => false,
+                'message' => 'data tidak ditemukan',
+            ], 404);
+        }
+    }
 }
